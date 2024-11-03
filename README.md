@@ -1,1 +1,1 @@
-# kapital-payment-gateway
+# kapital-python
