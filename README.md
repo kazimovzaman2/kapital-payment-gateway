@@ -40,7 +40,7 @@ client = Kapital(
 
 ### Creating a Payment Order
 
-You can create a payment order by calling the create_order method. Here's an example:
+You can create a payment order by calling the `create_order` method. Here's an example:
 
 ```python
 response = client.create_order(
@@ -78,6 +78,68 @@ The create_order method returns a dictionary containing the following keys:
     "secret": "order_secret",
     "redirect_url": "https://payment-url.com?id=123456&password=password"
 }
+```
+
+## Saving a Card
+
+To save a card for future transactions, use the `save_card` method:
+
+```python
+response, status = client.save_card(
+    redirect_url="https://your-redirect-url.com",
+    amount=100.0,
+    description="Saving card for future use",
+    currency="AZN",
+    language="az",
+)
+```
+
+## Paying with a Stored Card
+
+You can make a payment using a stored card by calling the `pay_with_card` method:
+
+```python
+response, status = client.pay_with_card(
+    amount=100.0,
+    description="Payment for services",
+    token="21790",  # Replace with your stored card token
+    currency="AZN",
+    language="az",
+)
+```
+
+## Refund a Transaction
+
+To refund a transaction, use the refund method. Here's an example:
+
+```python
+Copy code
+response, status = client.refund(
+order_id="45451", # Replace with your order ID
+amount=100.0, # Amount to refund
+)
+```
+
+## Reverse a Transaction
+
+To reverse a transaction, call the reverse method:
+
+```python
+Copy code
+response, status = client.reverse(
+order_id="45451", # Replace with your order ID
+)
+```
+
+## Get Order Details
+
+You can retrieve the details of an order using the get_order_details method:
+
+```python
+Copy code
+response, status = client.get_order_details(
+order_id="45451", # Replace with your order ID
+)
 ```
 
 ## Error Handling
