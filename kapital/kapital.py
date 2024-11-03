@@ -286,6 +286,12 @@ class Kapital:
                     "order_id": order_id,
                     "order_status": "PartPaid",
                 }, response.status_code
+            elif error_response.get("errorCode") == "InvalidOrderState":
+                return {
+                    "error": "Refund not allowed. Order is already completed.",
+                    "order_id": order_id,
+                    "order_status": "Voided",
+                }, response.status_code
             else:
                 raise Exception(
                     f"Failed to refund transaction: {response.text}"
