@@ -41,18 +41,18 @@ jobs:
       - name: Fetch information from PyPI
         run: |
           response=$(curl -s https://pypi.org/pypi/kapital/json || echo "{}")
-          latest_previous_version=$(echo $response | grep -oP '"releases":\{"\K[^"]+' | sort -rV | head -n 1)
-          if [ -z "$latest_previous_version" ]; then
+          latest_version=$(echo "$response" | grep -oP '"version": *"\K[^"]+')
+          if [ -z "$latest_version" ]; then
             echo "Package not found on PyPI."
-            latest_previous_version="0.0.0"
+            latest_version="0.0.0"
           fi
-          echo "Latest version on PyPI: $latest_previous_version"
-          echo "latest_previous_version=$latest_previous_version" >> $GITHUB_ENV
+          echo "Latest version on PyPI: $latest_version"
+          echo "latest_version=$latest_version" >> $GITHUB_ENV
 
       - name: Compare versions and exit if not newer
         run: |
           NEW_VERSION=${{ needs.details.outputs.new_version }}
-          LATEST_VERSION=$latest_previous_version
+          LATEST_VERSION=$latest_version
           if [ "$(printf '%s\n' "$LATEST_VERSION" "$NEW_VERSION" | sort -rV | head -n 1)" != "$NEW_VERSION" ] || [ "$NEW_VERSION" == "$LATEST_VERSION" ]; then
             echo "The new version $NEW_VERSION is not greater than the latest version $LATEST_VERSION on PyPI."
             exit 1
