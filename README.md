@@ -94,6 +94,20 @@ response, status = client.save_card(
 )
 ```
 
+In redirect url kapital will send a token which you can use for future transactions. The response will contain the token of the stored card.
+
+```json
+{
+  "order": {
+    "storedTokens": [
+      {
+        "id": "21790"
+      }
+    ]
+  }
+}
+```
+
 ## Paying with a Stored Card
 
 You can make a payment using a stored card by calling the `pay_with_card` method:
