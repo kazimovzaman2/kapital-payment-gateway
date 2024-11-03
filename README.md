@@ -56,15 +56,15 @@ print(response)
 
 ### Response Structure
 
-The create_order method returns a dictionary containing the following keys:
+The `create_order` method returns a dictionary containing the following keys:
 
-- order_id: The unique identifier for the order.
-- password: The password for the order.
-- hppUrl: The URL for redirecting the user to complete the payment.
-- status: The status of the order.
-- cvv2AuthStatus: The CVV2 authentication status.
-- secret: A secret value associated with the order.
-- redirect_url: The full URL to redirect the user for payment.
+- `order_id`: The unique identifier for the order.
+- `password`: The password for the order.
+- `hppUrl`: The URL for redirecting the user to complete the payment.
+- `status`: The status of the order.
+- `cvv2AuthStatus`: The CVV2 authentication status.
+- `secret`: A secret value associated with the order.
+- `redirect_url`: The full URL to redirect the user for payment.
 
 ### Example Response
 
@@ -85,7 +85,7 @@ The create_order method returns a dictionary containing the following keys:
 To save a card for future transactions, use the `save_card` method:
 
 ```python
-response, status = client.save_card(
+response, status_code = client.save_card(
   redirect_url="https://your-redirect-url.com",
   amount=100.0,
   description="Saving card for future use",
@@ -113,7 +113,7 @@ In redirect url kapital will send a token which you can use for future transacti
 You can make a payment using a stored card by calling the `pay_with_card` method:
 
 ```python
-response, status = client.pay_with_card(
+response, status_code = client.pay_with_card(
   amount=100.0,
   description="Payment for services",
   token="21790",  # Replace with your stored card token
@@ -127,7 +127,7 @@ response, status = client.pay_with_card(
 To refund a transaction, use the `refund` method. Here's an example:
 
 ```python
-response, status = client.refund(
+response, status_code = client.refund(
   order_id="45451", # Replace with your order ID
   amount=100.0, # Amount to refund
 )
@@ -138,7 +138,7 @@ response, status = client.refund(
 To reverse a transaction, call the `reverse` method:
 
 ```python
-response, status = client.reverse(
+response, status_code = client.reverse(
   order_id="45451", # Replace with your order ID
 )
 ```
@@ -148,7 +148,7 @@ response, status = client.reverse(
 You can retrieve the details of an order using the `get_order_details` method:
 
 ```python
-response, status = client.get_order_details(
+response, status_code = client.get_order_details(
   order_id="45451", # Replace with your order ID
 )
 ```
