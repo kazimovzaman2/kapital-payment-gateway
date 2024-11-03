@@ -1,7 +1,8 @@
 import json
-import requests
 from base64 import b64encode
-from typing import Union, Optional
+from typing import Optional, Union
+
+import requests
 
 
 class Kapital:
@@ -19,8 +20,12 @@ class Kapital:
 
         is_partial_custom = (
             (base_url is not None and (username is None or password is None))
-            or (username is not None and (base_url is None or password is None))
-            or (password is not None and (base_url is None or username is None))
+            or (
+                username is not None and (base_url is None or password is None)
+            )
+            or (
+                password is not None and (base_url is None or username is None)
+            )
         )
 
         if is_partial_custom:
