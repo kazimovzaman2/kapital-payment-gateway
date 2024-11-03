@@ -1,3 +1,8 @@
 twine
 setuptools
 wheel
+pre_commit==4.0.1
+pre-commit
+black
+pycln
+isort
