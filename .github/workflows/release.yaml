@@ -69,6 +69,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
+      - name: Update VERSION file with the new version
+        run: |
+          NEW_VERSION=${{ needs.details.outputs.new_version }}
+          echo "$NEW_VERSION" > VERSION
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
