@@ -32,9 +32,9 @@ To use the client, initialize it with your credentials. If you don't provide any
 
 ```python
 client = Kapital(
-    base_url="https://e-commerce.kapitalbank.az/api",
-    username="your-username",
-    password="your-password"
+  base_url="https://e-commerce.kapitalbank.az/api",
+  username="your-username",
+  password="your-password"
 )
 ```
 
@@ -44,11 +44,11 @@ You can create a payment order by calling the `create_order` method. Here's an e
 
 ```python
 response = client.create_order(
-    redirect_url="https://your-redirect-url.com",
-    amount=100.00,
-    description="Payment for Order #123",
-    currency="AZN",
-    language="az"
+  redirect_url="https://your-redirect-url.com",
+  amount=100.00,
+  description="Payment for Order #123",
+  currency="AZN",
+  language="az"
 )
 
 print(response)
@@ -70,13 +70,13 @@ The create_order method returns a dictionary containing the following keys:
 
 ```python
 {
-    "order_id": "123456",
-    "password": "secret_password",
-    "hppUrl": "https://payment-url.com",
-    "status": "pending",
-    "cvv2AuthStatus": "approved",
-    "secret": "order_secret",
-    "redirect_url": "https://payment-url.com?id=123456&password=password"
+  "order_id": "123456",
+  "password": "secret_password",
+  "hppUrl": "https://payment-url.com",
+  "status": "pending",
+  "cvv2AuthStatus": "approved",
+  "secret": "order_secret",
+  "redirect_url": "https://payment-url.com?id=123456&password=password"
 }
 ```
 
@@ -86,11 +86,11 @@ To save a card for future transactions, use the `save_card` method:
 
 ```python
 response, status = client.save_card(
-    redirect_url="https://your-redirect-url.com",
-    amount=100.0,
-    description="Saving card for future use",
-    currency="AZN",
-    language="az",
+  redirect_url="https://your-redirect-url.com",
+  amount=100.0,
+  description="Saving card for future use",
+  currency="AZN",
+  language="az",
 )
 ```
 
@@ -114,45 +114,42 @@ You can make a payment using a stored card by calling the `pay_with_card` method
 
 ```python
 response, status = client.pay_with_card(
-    amount=100.0,
-    description="Payment for services",
-    token="21790",  # Replace with your stored card token
-    currency="AZN",
-    language="az",
+  amount=100.0,
+  description="Payment for services",
+  token="21790",  # Replace with your stored card token
+  currency="AZN",
+  language="az",
 )
 ```
 
 ## Refund a Transaction
 
-To refund a transaction, use the refund method. Here's an example:
+To refund a transaction, use the `refund` method. Here's an example:
 
 ```python
-Copy code
 response, status = client.refund(
-order_id="45451", # Replace with your order ID
-amount=100.0, # Amount to refund
+  order_id="45451", # Replace with your order ID
+  amount=100.0, # Amount to refund
 )
 ```
 
 ## Reverse a Transaction
 
-To reverse a transaction, call the reverse method:
+To reverse a transaction, call the `reverse` method:
 
 ```python
-Copy code
 response, status = client.reverse(
-order_id="45451", # Replace with your order ID
+  order_id="45451", # Replace with your order ID
 )
 ```
 
 ## Get Order Details
 
-You can retrieve the details of an order using the get_order_details method:
+You can retrieve the details of an order using the `get_order_details` method:
 
 ```python
-Copy code
 response, status = client.get_order_details(
-order_id="45451", # Replace with your order ID
+  order_id="45451", # Replace with your order ID
 )
 ```
 
@@ -165,13 +162,13 @@ The client raises exceptions for various error cases, such as:
 
 ```python
 try:
-    response = client.create_order(
-        redirect_url="https://your-redirect-url.com",
-        amount=100.00,
-        description="Payment for Order #123"
-    )
+  response = client.create_order(
+    redirect_url="https://your-redirect-url.com",
+    amount=100.00,
+    description="Payment for Order #123"
+  )
 except Exception as e:
-    print(f"An error occurred: {e}")
+  print(f"An error occurred: {e}")
 ```
 
 ## Contributing
