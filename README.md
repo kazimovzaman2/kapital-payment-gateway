@@ -1,5 +1,7 @@
 # Kapital Payment Gateway Client
 
+![PyPI Downloads](https://static.pepy.tech/badge/kapital)
+
 `kapital` is a Python client for the Kapital Bank payment gateway, designed to simplify the process of creating and managing payment orders. This library provides a straightforward interface to interact with the Kapital Bank API, making it easier to integrate payment functionality into your applications.
 
 ## Features
