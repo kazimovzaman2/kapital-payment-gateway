@@ -184,4 +184,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Authors
 
 - [Zaman Kazimov](https://github.com/kazimovzaman2)
-- [Fuad Huseynov](https://github.com/fuadhuseynov)
